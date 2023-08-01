@@ -29,19 +29,19 @@ nav {
 
     display: flex;
     justify-content: space-between;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     padding: 10px;
     position: sticky;
-    top:0;
-    
+    top: 0;
+
 }
 
 .nav-left {
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
 .nav-left>.container {
@@ -61,7 +61,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .nav-right {
@@ -69,7 +69,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .nav-right>span {
@@ -97,9 +97,14 @@ nav {
     border: 1px solid grey;
     background-color: black;
     font-size: 15px;
-    outline: none;
     color: white;
 }
+
+input:focus {
+    outline: 1px solid blue;
+  }
+  
+
 
 .search>span {
 
@@ -150,23 +155,24 @@ main>.container {
     display: flex;
     padding: 10px;
     gap: 10px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 
 }
 
 main>.container>.left {
     width: 8%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     color: white;
     display: flex;
     flex-direction: column;
 
 }
-main>.container>.left>div{
 
-    border:1px solid yellow;
+main>.container>.left>div {
+
+    /* border: 1px solid yellow; */
     position: sticky;
-    top:90px;
+    top: 90px;
 }
 
 main>.container>.left>div>div {
@@ -176,23 +182,24 @@ main>.container>.left>div>div {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    cursor:pointer;
-    
+    cursor: pointer;
+
 
 }
 
 main>.container>.right {
     width: 92%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .logo-text {
 
-    font-size: 10px;
+    font-size: 9px;
     margin-top: 2vh;
     margin-bottom: 5vh;
     width: 100%;
-    text-align:center;
+    text-align: center;
+
 }
 
 @media screen and (max-width:740px) {
@@ -201,66 +208,157 @@ main>.container>.right {
 
         display: none;
     }
-    main>.container>.right{
 
-        width:100%;
+    main>.container>.right {
+
+        width: 100%;
     }
 }
-.scroll-container{
 
-    white-space:nowrap;
+.scroll-container {
+
+    white-space: nowrap;
     overflow: hidden;
-    border:1px solid yellow;
+    /* border: 1px solid yellow; */
 }
 
-.scroll-container > button{
+.scroll-container>button {
 
-    padding:10px;
+    padding: 8px;
     border-radius: 10px;
-    margin-right:0.5vw;
+    margin-right: 0.5vw;
     border: none;
-    background-color:rgb(34, 34, 34);
-    color:white;
-    cursor:pointer;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    cursor: pointer;
+    transition: background 0.5s;
+
 }
 
-.scroll-bar{
+.scroll-container>button:hover {
+    background: linear-gradient(to right, purple, lightblue);
+}
+
+.scroll-bar {
 
     display: flex;
     position: sticky;
-    top:90px;
-    border:1px solid green;
+    top: 90px;
+    /* border: 1px solid green; */
 }
 
-.scroll-bar>button{
+.scroll-bar>button {
 
-    background-color: rgb(15,15,15);
-    color:white;
+    background-color: rgb(34, 34, 34);
+    color: white;
     border: none;
-    cursor:pointer;
-    border-radius:10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
-#video-grid{
+#video-grid {
     margin-top: 4vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px; 
+    gap: 10px;
 }
 
-.video{
+.video {
     padding: 10px;
-    color: white ;
-    border:1px solid yellow;
-    background-color: #AAA;
-    height:320px;
-    color:black;
+    color: white;
+    /* border: 1px solid yellow; */
+    background-color: rgb(15, 15, 15);
+    height: 330px;
+    color: black;
+    cursor: pointer;
 }
-.video > img {
+
+.video>img {
     width: 100%;
-    height:230px;
+    height: 230px;
     border-radius: 20px;
+    border: 4px solid rgb(34, 34, 34);
+    transition: border-color 0.5s;
+
 }
-.video > b {
-    color:black ;
+
+.video>img:hover {
+    border-color: grey;
+}
+
+.video-top>img {
+    border-radius: 50%;
+    width: 10%;
+    height: 10%;
+    margin-right: 1vw;
+}
+
+.video-top {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    margin-top: 0.8vh;
+    margin-bottom: 1vh;
+
+}
+
+.video-top>p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.video-bottom {
+    font-size: small;
+    color: rgb(147, 147, 147);
+    margin-left: 4vw;
+}
+
+.channel {
+    display: flex;
+    align-items: center;
+}
+
+.channel>span {
+    margin-left: 0.5vw;
+    font-size: 16px;
+}
+
+.text-with-dot {
+    display: flex;
+    align-items: center;
+
+}
+
+.text-with-dot>span {
+    margin-right: 0.4vw;
+}
+
+@media screen and (max-width:860px) {
+    #video-grid {
+        margin-top: 4vh;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .video-bottom {
+        margin-left: 5vw;
+    }
+}
+
+@media screen and (max-width:480px) {
+    #video-grid {
+        margin-top: 4vh;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+    .video-bottom {
+        margin-left: 10vw;
+    }
 }
