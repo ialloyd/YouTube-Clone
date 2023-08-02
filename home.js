@@ -2,7 +2,6 @@ window.addEventListener('load', () => {
   getSearchResults('');
 });
 
-
 let prevButton = document.querySelector("#prev-button");
 let nextButton = document.querySelector("#next-button");
 let content = document.querySelector(".scroll-container");
@@ -15,7 +14,7 @@ nextButton.addEventListener("click", () => {
   content.scrollLeft += 100;
 });
 
-const apiKey = "AIzaSyC0lDc68z2wZ19AT7_ST7RQ2833ZIm1IyE";
+const apiKey = "AIzaSyAwNbvqR87lDcFomqHiTxomOqbsJD4meJo";
 const baseUrl = `https://www.googleapis.com/youtube/v3`;
 
 const searchButton = document.getElementById("search");
@@ -28,7 +27,6 @@ searchInput.addEventListener('keydown', (event) => {
         getSearchResults(searchString);
     }
 });
-
 
 searchButton.addEventListener("click", () => {
   let searchString = searchInput.value.trim();
@@ -135,3 +133,26 @@ function formatViewCount(viewCount) {
     return viewCount.toString();
   }
 }
+
+const indicator = document.querySelector('.scroll-indicator');
+let scrollTimeout = null;
+
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  
+  indicator.style.animationName = 'scroll';
+  indicator.style.animationDuration = '1s';
+  indicator.style.animationIterationCount = 'infinite';
+  indicator.style.animationTimingFunction = 'ease-in-out';
+  
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    indicator.style.animationName = '';
+  }, 100);
+});
+
+let lastScrollTop = 0;
+
+
+
+

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="home.css">
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
+    <div class="scroll-indicator"></div>
     <nav>
         <div class="nav-left">
             <div class="container">
@@ -68,14 +67,12 @@
                 <input id="search-input" placeholder="Search"><span id="search" class="material-symbols-outlined">search
                 </span>
             </div>
-
             <div class="voice-search">
                 <span class="material-symbols-outlined">
                     mic
                 </span>
             </div>
         </div>
-
         <div class="nav-right">
             <span class="material-symbols-outlined">
                 video_call
@@ -88,7 +85,6 @@
             </span>
         </div>
     </nav>
-
     <main>
         <div class="container">
             <div class="left">
@@ -111,7 +107,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="right">
                 <div class="scroll-bar">
                     <button id="prev-button"><span class="material-symbols-outlined">
@@ -139,17 +134,10 @@
                             chevron_right
                         </span></button>
                 </div>
-
-                <div id="video-grid">
-
-                </div>
-
-
+                <div id="video-grid"></div>
             </div>
         </div>
     </main>
-
-
     <script src="home.js"></script
 </body>
 </html>
