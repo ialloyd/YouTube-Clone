@@ -380,6 +380,9 @@ main>.container>.right {
 
         margin-left: 3.5vw;
     }
+    .nav-left>.container {
+        margin-left: -0.5vw;
+    }
 
 }
 
