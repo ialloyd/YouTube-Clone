@@ -22,7 +22,7 @@ body {
     height: 2px;
     background-color: white;
     margin: 6px;
-    margin-left: 2vw;
+    margin-left: 1.5vw;
 }
 
 nav {
@@ -33,6 +33,7 @@ nav {
     padding: 10px;
     position: sticky;
     top: 0;
+    background-color:rgb(15, 15, 15); 
 
 
 }
@@ -172,7 +173,7 @@ main>.container>.left {
 main>.container>.left>div {
 
     /* border: 1px solid yellow; */
-    position: sticky;
+    position: fixed;
     top: 90px;
 }
 
@@ -190,6 +191,7 @@ main>.container>.left>div>div {
 main>.container>.right {
     width: 94%;
     /* border: 1px solid red; */
+    
 }
 
 .logo-text {
@@ -220,6 +222,7 @@ main>.container>.right {
     white-space: nowrap;
     overflow: hidden;
     /* border: 1px solid yellow; */
+    background-color: rgb(15, 15, 15);
 }
 
 .scroll-container>button {
@@ -231,7 +234,7 @@ main>.container>.right {
     background-color: rgb(34, 34, 34);
     color: white;
     cursor: pointer;
-    transition: background 0.5s;
+   
 
 }
 
@@ -244,8 +247,9 @@ main>.container>.right {
 
     display: flex;
     position: sticky;
-    top: 90px;
+    top: 63px;
     /* border: 1px solid green; */
+    background-color: rgb(15, 15, 15);
 }
 
 .scroll-bar>button {
@@ -388,22 +392,3 @@ main>.container>.right {
     border-radius: 5px;
 }
 
-.scroll-indicator {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    transform-origin: center;
-    background: linear-gradient(to bottom, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
-}
-
-@keyframes scroll {
-    from {
-        transform: scaleY(0);
-    }
-
-    to {
-        transform: scaleY(1);
-    }
-}

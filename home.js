@@ -37,7 +37,7 @@ searchButton.addEventListener("click", () => {
 });
 
 async function getSearchResults(searchString) {
-  let url = `${baseUrl}/search?key=${apiKey}&q=${searchString}&part=snippet&type=video&maxResults=20`;
+  let url = `${baseUrl}/search?key=${apiKey}&q=${searchString}&part=snippet&type=video&maxResults=50`;
   const response = await fetch(url, { method: "GET" });
   const result = await response.json();
   //console.log(result);
@@ -133,26 +133,3 @@ function formatViewCount(viewCount) {
     return viewCount.toString();
   }
 }
-
-const indicator = document.querySelector('.scroll-indicator');
-let scrollTimeout = null;
-
-window.addEventListener('scroll', () => {
-  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  
-  indicator.style.animationName = 'scroll';
-  indicator.style.animationDuration = '1s';
-  indicator.style.animationIterationCount = 'infinite';
-  indicator.style.animationTimingFunction = 'ease-in-out';
-  
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    indicator.style.animationName = '';
-  }, 100);
-});
-
-let lastScrollTop = 0;
-
-
-
-
