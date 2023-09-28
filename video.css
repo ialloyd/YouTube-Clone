@@ -1,0 +1,423 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;800;900&display=swap);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(15, 15, 15);
+}
+
+.nav-left>.container {
+    cursor: pointer;
+    color: white;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 6px;
+    margin-left: 1.5vw;
+}
+
+nav {
+
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid yellow; */
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    background-color: rgb(15, 15, 15);
+}
+
+.nav-left {
+    display: flex;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.nav-left>.container {
+
+    margin-right: 1vw;
+}
+
+.nav-left>.logo>svg {
+    display: flex;
+    width: 100%;
+    height: 4vh;
+    cursor: pointer;
+
+}
+
+.nav-center {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+}
+
+.nav-right {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid green; */
+}
+
+.nav-right>span {
+
+    margin-right: 2vw;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.search {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.search input {
+
+    display: flex;
+    padding: 12px;
+    width: 40vw;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid grey;
+    background-color: black;
+    font-size: 15px;
+    color: white;
+}
+
+input:focus {
+    outline: 1px solid blue;
+}
+
+.search>span {
+
+    border: 1px solid grey;
+    padding: 9px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    width: 4vw;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.voice-search>span {
+
+    margin-left: 2vw;
+    margin-right: 2vw;
+    border-radius: 50%;
+    background-color: rgb(34, 34, 34);
+    padding: 9px;
+    color: white;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width:780px) {
+    .logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width:480px) {
+
+    .nav-left,
+    .nav-right {
+        display: none;
+    }
+
+    .nav-center {
+        margin: auto;
+    }
+}
+
+.main {
+
+    margin: 5px 55px;
+    /* border:1px solid red; */
+    display: flex;
+
+}
+
+.left {
+
+    width: 60%;
+    display: flex;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    color: white;
+    padding: 15px;
+
+}
+
+.left>h3 {
+
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+.right {
+    padding: 15px;
+    width: 40%;
+    border: 1px solid yellow;
+
+}
+
+#video-placeholder {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.scroll-container {
+
+    white-space: nowrap;
+    overflow: hidden;
+    /* border: 1px solid yellow; */
+    background-color: rgb(15, 15, 15);
+}
+
+.scroll-container>button {
+
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 0.5vw;
+    border: none;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    cursor: pointer;
+
+}
+
+.scroll-container>button:hover {
+    background: linear-gradient(to right, purple, lightblue);
+
+}
+
+.scroll-bar {
+
+    display: flex;
+    /* border: 1px solid green; */
+    background-color: rgb(15, 15, 15);
+}
+
+.scroll-bar>button {
+
+    background-color: rgb(34, 34, 34);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.channel {
+
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.channel>div>img {
+
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+}
+
+.channel>div {
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.channel>div>div {
+
+    margin: 10px;
+}
+
+.channel>div>div>h4 {
+
+    font-weight: 500;
+
+}
+
+.channel>div>div>p {
+
+    font-size: small;
+    color: grey
+}
+
+#subscribe {
+
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    padding: 15px;
+    height: 40px;
+
+}
+
+.like-dislike {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(39, 39, 39);
+    height: 38px;
+    border-radius: 20px;
+    padding: 20px 0;
+}
+
+.like-dislike>div {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like-dislike>div>span {
+
+    margin: 5px;
+}
+
+.like {
+
+    border-right: 1px solid grey;
+    padding-right: 5px;
+}
+
+.share {
+
+    background-color: rgb(39, 39, 39);
+    height: 38px;
+    border-radius: 20px;
+    padding: 20px;
+}
+.share>span{
+
+    margin-right: 10px;
+}
+
+.more {
+
+    background-color: rgb(39, 39, 39);
+    height: 38px;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.desc {
+    margin-top: 10px;
+    background-color: rgb(39, 39, 39);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.comments-header {
+
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.comments-header>div {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.add-comment {
+
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.add-comment>img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.add-comment>p {
+
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+    width: 100%;
+    color: grey;
+    font-size: small;
+}
+
+#comment>img {
+
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+
+}
+.comments{
+
+    margin-top: 25px;
+}
+#comment{
+
+    display:flex;
+    font-size: small;
+
+}
+
+#username span{
+
+    font-size: small;
+    color:grey;
+}
+#comment>div>p{
+
+    margin-bottom: 5px;
+}
+
+.comment-like-dislike{
+
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment-like-dislike>span{
+
+    margin-right: 10px;
+}

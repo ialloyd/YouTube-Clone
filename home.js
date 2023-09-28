@@ -22,10 +22,10 @@ const searchInput = document.getElementById("search-input");
 const container = document.getElementById("video-grid");
 
 searchInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        const searchString = searchInput.value;
-        getSearchResults(searchString);
-    }
+  if (event.key === 'Enter') {
+    const searchString = searchInput.value;
+    getSearchResults(searchString);
+  }
 });
 
 searchButton.addEventListener("click", () => {
@@ -37,7 +37,7 @@ searchButton.addEventListener("click", () => {
 });
 
 async function getSearchResults(searchString) {
-  let url = `${baseUrl}/search?key=${apiKey}&q=${searchString}&part=snippet&type=video&maxResults=50`;
+  let url = `${baseUrl}/search?key=${apiKey}&q=${searchString}&part=snippet&type=video&maxResults=20`;
   const response = await fetch(url, { method: "GET" });
   const result = await response.json();
   //console.log(result);
@@ -75,6 +75,10 @@ async function addDataOntoUI(videosList) {
     )} ago</span>
           </div>
         </div>`;
+
+    videoElement.addEventListener("click", () => {
+      navigateToVideo(video.id.videoId);
+    });
     container.appendChild(videoElement);
   }
 }
@@ -132,4 +136,9 @@ function formatViewCount(viewCount) {
   } else {
     return viewCount.toString();
   }
+}
+
+function navigateToVideo(videoId) {
+  document.cookie = `id=${videoId}; path=video.html`;
+  window.location.href = "video.html";
 }
