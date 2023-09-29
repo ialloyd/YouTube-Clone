@@ -283,7 +283,8 @@ input:focus {
     color: black;
     padding: 15px;
     height: 40px;
-
+    font-size: small;
+    font-weight: 600;
 }
 
 .like-dislike {
@@ -322,7 +323,8 @@ input:focus {
     border-radius: 20px;
     padding: 20px;
 }
-.share>span{
+
+.share>span {
 
     margin-right: 10px;
 }
@@ -340,7 +342,10 @@ input:focus {
     background-color: rgb(39, 39, 39);
     padding: 15px;
     border-radius: 10px;
-    font-size: small;
+    font-size: smaller;
+    line-height: 1.5em;
+    max-height: 7.5em;
+    overflow: hidden;
 }
 
 .comments-header {
@@ -389,35 +394,39 @@ input:focus {
     margin-right: 10px;
 
 }
-.comments{
+
+.comments {
 
     margin-top: 25px;
 }
-#comment{
 
-    display:flex;
+#comment {
+
+    display: flex;
     font-size: small;
+    margin-bottom: 40px;
 
 }
 
-#username span{
+#username span {
 
     font-size: small;
-    color:grey;
+    color: grey;
 }
-#comment>div>p{
+
+#comment>div>p {
 
     margin-bottom: 5px;
 }
 
-.comment-like-dislike{
+.comment-like-dislike {
 
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-.comment-like-dislike>span{
+.comment-like-dislike>span {
 
     margin-right: 10px;
 }

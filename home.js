@@ -48,7 +48,7 @@ async function getSearchResults(searchString) {
 async function addDataOntoUI(videosList) {
   for (const video of videosList) {
     const { snippet } = video;
-    const channelProfilePic = await getChannelProfilePic(snippet.channelId);
+    const channelProfilePic = await getChannelDetails(snippet.channelId);
     const videoDetails = await getVideoDetails(video.id.videoId);
     const formattedViewCount = formatViewCount(
       videoDetails.statistics.viewCount
@@ -83,19 +83,21 @@ async function addDataOntoUI(videosList) {
   }
 }
 
-async function getChannelProfilePic(channelId) {
-  let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&fields=items%2Fsnippet%2Fthumbnails&key=${apiKey}`;
+async function getChannelDetails(channelId) {
+
+  let url=`${baseUrl}/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
   const response = await fetch(url, { method: "GET" });
-  const result = await response.json();
-  //console.log(result.items[0].snippet.thumbnails.default.url);
-  return result.items[0].snippet.thumbnails.default.url;
+  const result= await response.json();
+  console.log(result);
+  return result.items[0].snippet.thumbnails.high.url;
 }
 
 async function getVideoDetails(videoId) {
-  let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`;
+  
+  let url = `${baseUrl}/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`;
   const response = await fetch(url, { method: "GET" });
   const result = await response.json();
-  //console.log(result);
+  console.log(result);
   return result.items[0];
 }
 
@@ -138,7 +140,8 @@ function formatViewCount(viewCount) {
   }
 }
 
-function navigateToVideo(videoId) {
+async function navigateToVideo(videoId) {
+
   document.cookie = `id=${videoId}; path=video.html`;
   window.location.href = "video.html";
 }
