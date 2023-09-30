@@ -162,7 +162,7 @@ input:focus {
 
     width: 60%;
     display: flex;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
     /* justify-content: center;
@@ -181,7 +181,7 @@ input:focus {
 .right {
     padding: 15px;
     width: 40%;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
 
 }
 
@@ -220,6 +220,7 @@ input:focus {
     display: flex;
     /* border: 1px solid green; */
     background-color: rgb(15, 15, 15);
+    margin-bottom: 25px;
 }
 
 .scroll-bar>button {
@@ -236,10 +237,9 @@ input:focus {
 .channel {
 
     display: flex;
-    flex-wrap: wrap;
-    border: 1px solid red;
+    /* flex-wrap: wrap; */
+    /* border: 1px solid red; */
     align-items: center;
-    width: 100%;
     justify-content: space-around;
 }
 
@@ -267,6 +267,10 @@ input:focus {
 .channel>div>div>h4 {
 
     font-weight: 500;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -429,4 +433,99 @@ input:focus {
 .comment-like-dislike>span {
 
     margin-right: 10px;
+}
+
+.comment-replies {
+
+    margin-top: 15px;
+}
+
+.replies-btn {
+
+    color: rgb(62, 165, 253);
+    background-color: rgb(15, 15, 15);
+    border: none;
+    padding: 15px 0;
+    font-weight: 600;
+}
+
+.video-container {
+
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.video-container>img {
+
+    height: 110px;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.video-desc>h5 {
+
+    margin-bottom: 8px;
+    font-weight: 600;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-desc>div {
+
+    display: flex;
+    align-items: center;
+    font-size: smaller;
+    color: rgb(165, 164, 164);
+}
+
+.video-desc>div>span {
+
+    font-size: medium;
+    margin-left: 5px;
+}
+
+.video-stat {
+    margin-top: 5px;
+    display: flex;
+    font-size: smaller;
+    color: rgb(165, 164, 164);
+
+}
+
+.video-stat>p,
+.video-stat>span {
+
+    margin-right: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:1230px) {
+    .main {
+        
+        flex-direction: column;
+    }
+
+    .left {
+        width: 75%;
+    }
+
+    .right {
+        width: 75%;
+    }
 }

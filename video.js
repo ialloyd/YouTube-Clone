@@ -2,7 +2,8 @@ let prevButton = document.querySelector("#prev-button");
 let nextButton = document.querySelector("#next-button");
 let content = document.querySelector(".scroll-container");
 let leftSection = document.getElementsByClassName('left')[0];
-const apiKey = "AIzaSyAwNbvqR87lDcFomqHiTxomOqbsJD4meJo";
+let rightSection = document.getElementsByClassName('right')[0];
+const apiKey = "AIzaSyDvo2p4xMEI3GC-PWH02_0OAIN1h88k4rE";
 const baseUrl = `https://www.googleapis.com/youtube/v3`;
 
 prevButton.addEventListener("click", () => {
@@ -20,20 +21,25 @@ window.addEventListener("load", () => {
       height: "350",
       width: "700",
       videoId,
+      playerVars: {
+        autoplay: 1,
+        modestbranding: 1,
+      }
     });
   }
   addDatatoUI(videoId);
 });
 
 async function addDatatoUI(videoId) {
-  console.log(videoId)
+  // console.log(videoId)
   const videoDetails = await getVideoDetails(videoId);
-  // console.log(videoDetails)
-
+  // // console.log(videoDetails)
   const channelDetails = await getChannelDetails(videoDetails.items[0].snippet.channelId);
   // console.log(channelDetails)
+  searchForRelatedContent(channelDetails.items[0].snippet.title);
+
   const comments = await loadComments(videoId);
-  console.log(comments)
+  // console.log(comments)
   leftSection.innerHTML += ` <h3>${videoDetails.items[0].snippet.title}</h3>
   <div class="channel">
       <div><img
@@ -70,7 +76,7 @@ async function addDatatoUI(videoId) {
       </div>
   </div>
   <div class="desc">
-      ${formatCount(videoDetails.items[0].statistics.viewCount)} views ${formatTime(videoDetails.items[0].snippet.publishedAt)} ago 
+      <b>${formatCount(videoDetails.items[0].statistics.viewCount)} views</b> <b>${formatTime(videoDetails.items[0].snippet.publishedAt)} ago</b> 
       ${videoDetails.items[0].snippet.description}
   </div>
   <div class="comments-header">
@@ -83,7 +89,7 @@ async function addDatatoUI(videoId) {
   </div>
 
   <div class="add-comment">
-      <img src="data:image/jpeg;base64,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"
+      <img src="resources/download (1).jpg"
           alt="">
       <p>Add a comment ...</p>
   </div>`
@@ -102,10 +108,12 @@ function addComments(comments) {
     const cmnt = document.createElement('div');
     cmnt.id = 'comment';
 
-    cmnt.innerHTML = `<img src='${comment.snippet.topLevelComment.snippet.authorProfileImageUrl}'
-                        alt="">
-                    <div>
-                        <p id="username">@${comment.snippet.topLevelComment.snippet.authorDisplayName} <span>${formatTime(comment.snippet.topLevelComment.snippet.publishedAt)} ago</span></p>
+    const image = document.createElement('img');
+    image.src = `${comment.snippet.topLevelComment.snippet.authorProfileImageUrl}`;
+
+    const inner = document.createElement('div');
+
+    inner.innerHTML = `<p id="username">@${comment.snippet.topLevelComment.snippet.authorDisplayName} <span>${formatTime(comment.snippet.topLevelComment.snippet.publishedAt)} ago</span></p>
                         <p>${comment.snippet.topLevelComment.snippet.textDisplay}</p>
 
                         <div class="comment-like-dislike">
@@ -117,14 +125,127 @@ function addComments(comments) {
                                 thumb_down
                             </span>
                             <span>Reply</span>
-                        </div>
-                    </div>`
+                        </div>`
+
+    if (comment.snippet.totalReplyCount) {
+
+      addCommentReplies(inner, comment.snippet.topLevelComment.id)
+
+    }
 
     container.appendChild(cmnt);
+    cmnt.appendChild(image);
+    cmnt.appendChild(inner);
 
   }
 
   leftSection.appendChild(container);
+
+}
+
+async function searchForRelatedContent(searchString) {
+
+  let url = `${baseUrl}/search?key=${apiKey}&q=${searchString}&part=snippet&type=video&maxResults=20`;
+  const response = await fetch(url, { method: "GET" });
+  const result = await response.json();
+  displayVideos(result);
+
+}
+
+async function displayVideos(result) {
+  // console.log(result.items)
+  for (let item of result.items) {
+    const container = document.createElement('div')
+    container.className = 'video-container';
+    const videoDetails = await getVideoDetails(item.id.videoId);
+    console.log(videoDetails);
+    container.innerHTML = `<img src="${item.snippet.thumbnails.medium.url}"
+  alt="">
+<div class="video-desc">
+  <h5>${item.snippet.title}</h5>
+  <div>
+      <p>${item.snippet.channelTitle}</p>
+      <span class="material-symbols-outlined">
+          check_circle
+      </span>
+  </div>
+  <div class="video-stat">
+      <p>${formatCount(videoDetails.items[0].statistics.viewCount)} views </p>
+      <span>•</span>
+      <p>${formatTime(videoDetails.items[0].snippet.publishedAt)} ago</p>
+  </div>
+</div>`
+
+    rightSection.appendChild(container);
+
+  }
+
+}
+
+async function addCommentReplies(inner, cmntId) {
+
+  let commentReplies = await loadCommentReplies(cmntId);
+
+  const btn = document.createElement('button');
+  btn.textContent = 'Replies';
+  btn.className = 'replies-btn';
+  btn.addEventListener('click', () => {
+
+    if (document.getElementsByClassName('comment-replies')[0].style.display === 'none') {
+
+      document.getElementsByClassName('comment-replies')[0].style.display = ''
+
+    }
+    else {
+
+      document.getElementsByClassName('comment-replies')[0].style.display = 'none'
+
+    }
+
+  })
+
+  const replies = document.createElement('div');
+  replies.className = 'comment-replies';
+  replies.style.display = 'none';
+  commentReplies.items.forEach(reply => {
+
+    const container = document.createElement('div');
+    container.id = 'comment';
+
+    container.innerHTML = `<img src='${reply.snippet.authorProfileImageUrl}'
+    alt="">
+<div>
+    <p id="username">@${reply.snippet.authorDisplayName} <span>${formatTime(reply.snippet.publishedAt)} ago</span></p>
+    <p>${reply.snippet.textDisplay}</p>
+
+    <div class="comment-like-dislike">
+        <span class="material-symbols-outlined">
+            thumb_up
+        </span>
+        <span>${formatCount(reply.snippet.likeCount)}</span>
+        <span class="material-symbols-outlined">
+            thumb_down
+        </span>
+        <span>Reply</span>
+    </div>
+</div>`
+
+    replies.appendChild(container);
+
+  })
+
+  inner.appendChild(btn);
+  inner.appendChild(replies);
+
+}
+
+async function loadCommentReplies(cmntId) {
+
+  let url = `${baseUrl}/comments?part=snippet&parentId=${cmntId}&maxResults=10&key=${apiKey}`;
+  const response = await fetch(url, { method: "GET" });
+  const result = await response.json();
+  // console.log(result);
+  return result;
 
 }
 
@@ -150,10 +271,9 @@ async function loadComments(videoId) {
   let url = `${baseUrl}/commentThreads?part=snippet&videoId=${videoId}&maxResults=10&key=${apiKey}`;
   const response = await fetch(url, { method: "GET" });
   const result = await response.json();
-  console.log(result.items);
+  // console.log(result.items);
   return result.items;
 }
-
 
 function formatCount(count) {
   if (count >= 1000000000) {
@@ -162,6 +282,9 @@ function formatCount(count) {
     return (count / 1000000).toFixed(1) + 'M';
   } else if (count >= 1000) {
     return (count / 1000).toFixed(1) + 'K';
+  }
+  else if (!count) {
+    return 0;
   }
   return count;
 }
